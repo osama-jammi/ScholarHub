@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Académique</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Portfolio Académique</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#research">Recherche</a></li>
+                <li><a href="#courses">Cours</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">Mode Sombre</button>
+    </header>
+
+    <section id="about">
+        <h2>À Propos</h2>
+        <div class="about-content">
+            <img src="professor.jpg" alt="Photo du Professeur">
+            <p>
+                Bonjour, je suis [Nom du Professeur]. Je suis spécialisé en [Domaine d'Expertise].
+                <a href="https://scholar.google.com" target="_blank">Voir mon Google Scholar</a>.
+            </p>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Recherche et Publications</h2>
+        <p>Liste des publications à venir...</p>
+    </section>
+
+    <section id="courses">
+        <h2>Cours Enseignés</h2>
+        <p>Détails des cours à venir...</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form id="contact-form">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 [Nom du Professeur]. Tous droits réservés.</p>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
