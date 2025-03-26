@@ -2,6 +2,7 @@ body{
     background-color: #f5f5f5;
     font-size: 16px;
     line-height: 1.6;
+    background-image: linear-gradient(to  bottom ,white,rgba(0, 89, 255, 0.226),white);
     
  
 }
