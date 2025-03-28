@@ -25,5 +25,11 @@
 
  // Skeleton Loading Simulation
  setTimeout(() => {
-     document.querySelector('.skeleton-loader').style.display = 'none';
- }, 2000);
+    document.querySelector('.skeleton-loader').style.display = 'none';
+    document.querySelectorAll('.cadre').forEach(cadre => {
+            cadre.style.display = 'inline-block';
+       
+        
+    })
+    
+}, 2000);

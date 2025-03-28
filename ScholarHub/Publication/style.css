@@ -180,9 +180,9 @@
 
         .skeleton-loader {
             background: linear-gradient(90deg, 
-                rgba(0, 0, 0, 0.05) 25%, 
-                rgba(0, 0, 0, 0.1) 50%, 
-                rgba(0, 0, 0, 0.05) 75%);
+                rgba(196, 195, 195, 0.705) 25%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                rgba(247, 242, 242, 0.76) 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
             border-radius: 8px;
@@ -227,4 +227,7 @@
 
     }
     
+}
+.cadre{
+    display: none;
 }
