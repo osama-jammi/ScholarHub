@@ -114,7 +114,7 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border: 7px solid;
-            border-image: linear-gradient( 90deg,rgba(255, 255, 255, 0),#142250,rgba(255, 255, 255, 0)) 1;
+            border-image: linear-gradient( 90deg,rgba(255, 255, 255, 0),#A32684,rgba(255, 255, 255, 0)) 1;
         
         }
 
