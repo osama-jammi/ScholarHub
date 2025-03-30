@@ -160,6 +160,7 @@
             width: 100%;
             z-index: 1000;
         }
+        
          
         .progress-fill {
             height: 100%;
@@ -193,6 +194,10 @@
             .annonces {
                 padding: 15px;
                 max-width: 100%;
+            }
+            .navbar-toggler i, .navbar-toggler{
+                color:  var(--text-color);
+                border-color: var(--text-color);
             }
         }
 
