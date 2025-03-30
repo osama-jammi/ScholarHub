@@ -281,3 +281,35 @@
 .dropdown-item{
     border-bottom: 1px solid rgba(138, 135, 130, 0.322);
 }
+#comment-user img{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+#comment-user{
+    display: flex;
+   flex-direction: row;
+   padding-top: 10px;
+   width: 50%;
+   justify-content:flex-start;
+   margin-top: 10px;
+}
+#comment-content{
+    padding-left: 15px;
+    padding-top: 7px;
+    
+
+}
+#reaction-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+#reaction-user i{
+    cursor: pointer;
+}
