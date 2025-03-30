@@ -304,11 +304,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 40%;
+    width:150px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    align-items: center;
+    text-wrap: nowrap;
 }
 #reaction-user i{
     cursor: pointer;
