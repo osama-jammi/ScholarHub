@@ -20,13 +20,15 @@ body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     transition: all 0.3s ease;
     padding-top: 80px;
-    background-image: url("https://www.code212.ac.ma/img/elements/box-element.png");
+    background-image: url("https://www.code212.ac.ma/img/elements/box-element.png"),linear-gradient(90deg,var(--background-color) , #000000,var(--background-color));
 }
+
 
 .navbar {
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.8) !important;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 
 .dark-mode .navbar {
@@ -37,6 +39,33 @@ body {
     animation-delay: 0.6s;
     animation-direction: alternate;
 }
+.progress-bar {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.185);
+    border-radius: 2px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+ 
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+@media (max-width: 992px) {
+ 
+    .navbar-toggler i, .navbar-toggler{
+        color:  var(--text-color);
+        border-color: var(--text-color);
+    }
+}
+
 @keyframes light {
 from{
 opacity: 1;
