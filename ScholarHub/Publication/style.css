@@ -10,7 +10,7 @@
         .dark-mode {
             --primary-color: #7b9cff;
             --secondary-color: #6c63ff;
-            --background-color: #121212;
+            --background-color: #121212a6;
             --card-bg: #2d2d2d;
             --text-muted: #9ca1a7;
 
@@ -37,7 +37,19 @@
         .dark-mode .navbar {
             background: rgba(45, 45, 45, 0.8) !important;
         }
-     
+         #info{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;    
+            width: 100%;
+            border-bottom: 1px solid;
+            padding-bottom: 4px;
+            border-image: linear-gradient( 90deg,rgba(255, 255, 255, 0),#A32684,rgba(255, 255, 255, 0)) 1;
+         }
+         #info >div:last-child{
+            transform: translateX(-10px);
+
+         }
         .annonces {
             max-width: 800px;
             margin: 0 auto;
