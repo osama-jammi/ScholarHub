@@ -211,6 +211,13 @@
                 color:  var(--text-color);
                 border-color: var(--text-color);
             }
+            .light-element{
+                display: none;
+
+            }
+            #rocket{
+                display: none;
+            }
         }
 
         .skeleton-loader {
