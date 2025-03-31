@@ -315,8 +315,10 @@
     width:150px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 2px solid rgba(0, 0, 0, 0.473);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-image: linear-gradient( 90deg,rgba(255, 255, 255, 0),rgb(17, 57, 233),rgba(255, 255, 255, 0)) 1;
+
     align-items: center;
     text-wrap: nowrap;
 }
@@ -335,4 +337,7 @@
     position: absolute;
     transform: translateX(38rem);
 
+}
+.fa-thumbs-up,.fa-thumbs-down{
+    font-size: large;
 }

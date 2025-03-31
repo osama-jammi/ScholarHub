@@ -178,12 +178,12 @@ if ($result->num_rows > 0) {
         <input type="hidden" name="deslike" value="' . $comment['deslike'] . '">
 
             <div id="like">
-                <input type="submit" name="like_submit" value=""> <i class="fa-solid fa-thumbs-up"></i>
+                <input type="submit" name="like_submit" value=""> <i class="fa-regular fa-thumbs-up"></i>
 
                 <span> ' . $comment["likee"] . '</span>
             </div>
             <div id="deslike">
-                <input type="submit" name="deslike_submit" value=""> <i class="fa-solid fa-thumbs-down"></i>
+                <input type="submit" name="deslike_submit" value=""> <i class="fa-regular fa-thumbs-down"></i>
                 <span> ' . $comment["deslike"] . '</span>
             </div>
             </form>
