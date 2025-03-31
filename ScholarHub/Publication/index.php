@@ -5,14 +5,14 @@ include '../Base-donnee/index.php';
 $sql = "SELECT id,title,description,genre FROM annonces";
 $result = $conn->query($sql);
 $annoces = array();
-$comments=array();
+$comments = array();
 
 if ($result->num_rows > 0) {
     // output data of each row
     while ($row = $result->fetch_assoc()) {
         array_push($annoces, $row);
     }
-   
+
 } else {
     echo "0 results";
 }
@@ -83,9 +83,11 @@ if ($result->num_rows > 0) {
     <main class="container">
         <div class="annonces">
             <div class="skeleton-loader" style="height: 200px"></div>
-            <?php 
-foreach ($annoces as $annoce) {
-    echo '
+            <?php
+            foreach ($annoces as $annoce) {
+                echo '
+                <div  id="' . str_replace(" ", "", $annoce["title"]) . '"></div>
+                <div ></div>
     <article class="cadre">
         <h2 class="titre-annonce">' . $annoce["title"] . '</h2>
         <div class="annonce-header">
@@ -124,63 +126,65 @@ foreach ($annoces as $annoce) {
 
         <div class="comment-section">
             <form class="d-flex gap-2" id="add" action="./php/add_comment.php" method="post">
-            <input type="hidden" name="id" value="'.$annoce['id'].'">
+            <input type="hidden" name="id" value="' . $annoce['id'] . '">
                 <input type="text" class="form-control" placeholder="Add a comment..." name="content" />
                 <input type="submit" id="add_comment" name="comment" class="btn btn-primary">
                     <i class="fas fa-paper-plane btn btn-primary"></i>
             </form>
-            <button data-bs-toggle="collapse" data-bs-target="#demo'.$annoce['id'].'" class="btn btn-primary " style="margin-top:7px">Commentaires  </button>
-    <div id="demo'.$annoce['id'].'"  class="collapse"> ';
-            $sql = "SELECT id,id_user,id_annonce,descreption,likee,deslike FROM comment WHERE id_annonce='".$annoce['id']."'";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while ($row = $result->fetch_assoc()) {
-                    array_push($comments, $row);
-                     
-                }}
-          
-            foreach ($comments as $comment) {
-               echo '
+            <button data-bs-toggle="collapse" data-bs-target="#demo' . $annoce['id'] . '" class="btn btn-primary dropdown-toggle" style="margin-top:7px">Commentaires  </button>
+    <div id="demo' . $annoce['id'] . '"  class="collapse demo"  >';
+                $sql = "SELECT id,id_user,id_annonce,descreption,likee,deslike FROM comment WHERE id_annonce='" . $annoce['id'] . "'";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while ($row = $result->fetch_assoc()) {
+                        array_push($comments, $row);
+
+                    }
+                }
+
+                foreach ($comments as $comment) {
+                    echo '
               
                <div id="comment-user">
                    <img src="./images/image.png" class="user-avatar" />
                    <div>
                        <div>';
-                       $user=array();
-                       $sql = "SELECT username,avatar FROM users Where id=".$comment['id_user']."";
-                         $result = $conn->query($sql);
-                       if ($result->num_rows > 0) {
-                     // output data of each row
-                       while ($row = $result->fetch_assoc()) {
-                     array_push($user, $row);
-                 }}else{
-                    break;
-                 }
-                         echo'  @<strong>'.str_replace(" ", "", $user[0]["username"]).'';
-                         echo'
+                    $user = array();
+                    $sql = "SELECT username,avatar FROM users Where id=" . $comment['id_user'] . "";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        // output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            array_push($user, $row);
+                        }
+                    } else {
+                        break;
+                    }
+                    echo '  @<strong>' . str_replace(" ", "", $user[0]["username"]) . '';
+                    echo '
             </strong>
             <small id="text-muted"> 2 hours ago</small>
         </div>
         <div id="comment-content" >
             <p style="    width: 300px;text-wrap:wrap;
-            "> '.$comment["descreption"].'
+            "> ' . $comment["descreption"] . '
             </p>
         </div>
         <form id="reaction-user" action="./php/reaction.php" method="post">
-        <input type="hidden" name="id" value="'.$comment['id'].'">
-        <input type="hidden" name="like" value="'.$comment['likee'].'">
-        <input type="hidden" name="deslike" value="'.$comment['deslike'].'">
+        <input type="hidden" name="id" value="' . $comment['id'] . '">
+        <input type="hidden" name="like" value="' . $comment['likee'] . '">
+        <input type="hidden" name="deslike" value="' . $comment['deslike'] . '">
 
             <div id="like">
                 <input type="submit" name="like_submit" value=""> <i class="fa-solid fa-thumbs-up"></i>
 
-                <span> '.$comment["likee"].'</span>
+                <span> ' . $comment["likee"] . '</span>
             </div>
             <div id="deslike">
                 <input type="submit" name="deslike_submit" value=""> <i class="fa-solid fa-thumbs-down"></i>
-                <span> '.$comment["deslike"].'</span>
+                <span> ' . $comment["deslike"] . '</span>
             </div>
             </form>
         </div>
@@ -188,37 +192,51 @@ foreach ($annoces as $annoce) {
 
 
         ';
-        }
-        echo'
+                }
+                echo '
 
         </div>
         </article>
         ';
-        $comments = array();
+                $comments = array();
 
-        }
+            }
 
-        ?>
+            ?>
 
 
 
 
         </div>
     </main>
+    <?php
+    $sql = "SELECT title FROM annonces limit 3";
+    $result = $conn->query($sql);
+    $annonces = array();
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while ($row = $result->fetch_assoc()) {
+            array_push($annonces, $row);
 
+        }
+    }
+
+    ?>
     <aside class="recent-annonce">
         <h5 class="fw-bold mb-3">Recent Announcements</h5>
         <div class="list-group">
-            <a href="#"
+            <a href="#<?php echo str_replace(" ", "", $annonces[0]["title"]) ?>"
                 class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                Meeting Today
+                <?php echo $annonces[0]["title"] ?>
                 <span class="badge bg-primary rounded-pill">New</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                System Maintenance
+            <a href="                               #<?php echo str_replace(" ", "", $annonces[1]["title"]); ?>"
+                class="list-group-item list-group-item-action">
+                <?php echo $annonces[1]["title"] ?>
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                New Features Added
+            <a href=" #<?php echo str_replace(" ", "", $annonces[2]["title"]) ?> " class=" list-group-item
+                list-group-item-action">
+                <?php echo $annonces[2]["title"] ?>
             </a>
         </div>
     </aside>
@@ -280,7 +298,8 @@ foreach ($annoces as $annoce) {
     </script>
 </body>
 
-</html><?php 
+</html>
+<?php
 $conn->close();
 
 ?>
