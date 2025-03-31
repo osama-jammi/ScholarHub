@@ -1,6 +1,5 @@
 <?php
-session_start(); // Démarrer la session
-?><?php
+
 include '../Base-donnee/index.php';
 
 $sql = "SELECT id,title,description,genre FROM annonces";
@@ -39,7 +38,8 @@ if ($result->num_rows > 0) {
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#" style="color: var(--primary-color)">Annonces et PubSpace</a>
+            <a class="navbar-brand fw-bold" href="#" style="color: var(--primary-color)">Annonces et PubSpace
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -129,7 +129,8 @@ foreach ($annoces as $annoce) {
                 <input type="submit" id="add_comment" name="comment" class="btn btn-primary">
                     <i class="fas fa-paper-plane btn btn-primary"></i>
             </form>
-            <div id="comments-user">';
+            <button data-bs-toggle="collapse" data-bs-target="#demo'.$annoce['id'].'" class="btn btn-primary " style="margin-top:7px">Commentaires  </button>
+    <div id="demo'.$annoce['id'].'"  class="collapse"> ';
             $sql = "SELECT id,id_user,id_annonce,descreption,likee,deslike FROM comment WHERE id_annonce='".$annoce['id']."'";
             $result = $conn->query($sql);
             
@@ -162,8 +163,9 @@ foreach ($annoces as $annoce) {
             </strong>
             <small id="text-muted"> 2 hours ago</small>
         </div>
-        <div id="comment-content">
-            <p> '.$comment["descreption"].'
+        <div id="comment-content" >
+            <p style="    width: 300px;text-wrap:wrap;
+            "> '.$comment["descreption"].'
             </p>
         </div>
         <form id="reaction-user" action="./php/reaction.php" method="post">
@@ -185,10 +187,10 @@ foreach ($annoces as $annoce) {
         </div>
 
 
-
         ';
         }
         echo'
+
         </div>
         </article>
         ';
