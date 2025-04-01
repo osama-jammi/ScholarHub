@@ -24,6 +24,7 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             transition: all 0.3s ease;
             padding-top: 80px;
+            overflow-x: hidden;
             background-image: url("https://www.code212.ac.ma/img/elements/box-element.png"),linear-gradient(90deg,var(--background-color) , #000000,var(--background-color));
         }
        
@@ -65,6 +66,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             overflow: hidden;
             margin-top: 20px;
+            width:100%;
 
         }
         
@@ -122,7 +124,7 @@
             border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .recent-annonce ,.filter{
+        .recent-annonce ,.filter,.search{
             position: fixed;
             right: 2rem;
             width: 300px;
@@ -130,7 +132,6 @@
             border-radius: 16px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             padding: 1.5rem;
-            top: 100px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border: 7px solid;
@@ -139,6 +140,14 @@
         }
         .filter{
             left : 2rem;
+        }
+        .recent-annonce,.filter{
+            top: 100px;
+
+        }
+        .search{
+            bottom: 4rem;
+            background-color: transparent;
         }
 
         .fab {
@@ -208,7 +217,6 @@
             
             .annonces {
                 padding: 15px;
-                max-width: 100%;
             }
             .navbar-toggler i, .navbar-toggler{
                 color:  var(--text-color);
@@ -306,6 +314,11 @@
 .demo{
     height: 150px;
     overflow-y: scroll;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-top: 4px;
+    border-image: linear-gradient( 90deg,rgba(255, 255, 255, 0),rgba(255, 4, 79, 0.192),rgba(255, 255, 255, 0)) 1;
+
 }
 
 #reaction-user{
@@ -340,4 +353,12 @@
 }
 .fa-thumbs-up,.fa-thumbs-down{
     font-size: large;
+}
+.search-bar {
+    transition: width 0.3s ease-in-out;
+    width: 40px;
+}
+
+.search-bar:focus {
+    width: 250px;
 }

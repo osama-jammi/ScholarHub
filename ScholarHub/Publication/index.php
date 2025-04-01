@@ -2,10 +2,11 @@
 
 include '../Base-donnee/index.php';
 
-$sql = "SELECT id,title,description,genre FROM annonces";
+$sql = "SELECT id,title,description,genre,time ,cours FROM annonces";
 $result = $conn->query($sql);
 $annoces = array();
 $comments = array();
+$genre = array("exeman" => "danger", "absence" => "warning", "publication" => "info", "urgent" => "dark","cours"=>"primary");
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -85,6 +86,10 @@ if ($result->num_rows > 0) {
             <div class="skeleton-loader" style="height: 200px"></div>
             <?php
             foreach ($annoces as $annoce) {
+                $now = new DateTime();
+                $annonce_time = new DateTime($annoce["time"]);
+                $interval = $now->diff($annonce_time);
+
                 echo '
                 <div  id="' . str_replace(" ", "", $annoce["title"]) . '"></div>
                 <div ></div>
@@ -94,24 +99,24 @@ if ($result->num_rows > 0) {
             <img src="./images/image.png" class="user-avatar" />
             <div>
                 <h3 class="mb-0">Issam Mouhala</h3>
-                <small id="text-muted">Posted 2 hours ago</small>
+                <small id="text-muted">Posted ' . $interval->h + ($interval->days * 24) . ' hours ago</small>
             </div>
         </div>
         <div class="annonce-content">
             <div id="info">
                 <div>
                     <strong>Genre :</strong>
-                    <span class="badge bg-info">' . $annoce["genre"] . '</span>
+                    <span class="badge bg-' . $genre[$annoce["genre"]] . '">' . strtoupper($annoce["genre"]) . '</span>
                 </div>
                 <div>
                     <strong>Cours :</strong>
-                    <span class="badge bg-secondary">WEB-Tech</span>
+                    <span class="badge bg-secondary">' . ucwords($annoce["cours"]). '</span>
                 </div>
             </div>
 
             <div class="content">
                 <i class="fas fa-file-upload fs-4 mb-2"></i>
-                <p class="small mb-2" style="width: 610px;;">' . $annoce["description"] . '</p>
+                <p class="small mb-2" ">' . $annoce["description"] . '</p>
             </div>
 
             <div class="mt-4">
@@ -238,6 +243,21 @@ if ($result->num_rows > 0) {
                 list-group-item-action">
                 <?php echo $annonces[2]["title"] ?>
             </a>
+        </div>
+    </aside>
+    <aside>
+        <div class="d-flex justify-content-center align-items-center search">
+            <div class="position-relative">
+                <input type="text" class="form-control rounded-pill search-bar pe-5" placeholder="Search..."
+                    aria-label="Search">
+                <button class="btn position-absolute top-50 end-0 translate-middle-y" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </aside>
     <aside class="filter">
