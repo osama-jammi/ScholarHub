@@ -2,11 +2,11 @@
 
 include '../Base-donnee/index.php';
 
-$sql = "SELECT id,title,description,genre,time ,cours FROM annonces";
+$sql = "SELECT id,title,description,genre,time ,cours FROM annonces order by time DESC";
 $result = $conn->query($sql);
 $annoces = array();
 $comments = array();
-$genre = array("exeman" => "danger", "absence" => "warning", "publication" => "info", "urgent" => "dark","cours"=>"primary");
+$genre = array("examen" => "danger", "absence" => "warning", "publication" => "info", "urgent" => "dark","cours"=>"primary");
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -82,6 +82,21 @@ if ($result->num_rows > 0) {
     <img src="https://www.code212.ac.ma/img/elements/rocket-element.png" alt="" id="rocket" />
 
     <main class="container">
+        <aside>
+            <div class="justify-content-center align-items-center search">
+                <div class="position-relative">
+                    <input type="text" class="form-control rounded-pill search-bar pe-5" placeholder="Search..."
+                        aria-label="Search">
+                    <button class="btn position-absolute top-50 end-0 translate-middle-y" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </aside>
         <div class="annonces">
             <div class="skeleton-loader" style="height: 200px"></div>
             <?php
@@ -99,7 +114,7 @@ if ($result->num_rows > 0) {
             <img src="./images/image.png" class="user-avatar" />
             <div>
                 <h3 class="mb-0">Issam Mouhala</h3>
-                <small id="text-muted">Posted ' . $interval->h + ($interval->days * 24) . ' hours ago</small>
+                <small id="text-muted">Posted ' . $interval->h + ($interval->days * 24)-1 . ' hours ago</small>
             </div>
         </div>
         <div class="annonce-content">
@@ -138,7 +153,7 @@ if ($result->num_rows > 0) {
             </form>
             <button data-bs-toggle="collapse" data-bs-target="#demo' . $annoce['id'] . '" class="btn btn-primary dropdown-toggle" style="margin-top:7px">Commentaires  </button>
     <div id="demo' . $annoce['id'] . '"  class="collapse demo"  >';
-                $sql = "SELECT id,id_user,id_annonce,descreption,likee,deslike FROM comment WHERE id_annonce='" . $annoce['id'] . "'";
+                $sql = "SELECT id,id_user,id_annonce,descreption,likee,deslike,time FROM comment WHERE id_annonce='" . $annoce['id'] . "'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -150,12 +165,6 @@ if ($result->num_rows > 0) {
                 }
 
                 foreach ($comments as $comment) {
-                    echo '
-              
-               <div id="comment-user">
-                   <img src="./images/image.png" class="user-avatar" />
-                   <div>
-                       <div>';
                     $user = array();
                     $sql = "SELECT username,avatar FROM users Where id=" . $comment['id_user'] . "";
                     $result = $conn->query($sql);
@@ -167,10 +176,23 @@ if ($result->num_rows > 0) {
                     } else {
                         break;
                     }
-                    echo '  @<strong>' . str_replace(" ", "", $user[0]["username"]) . '';
-                    echo '
-            </strong>
-            <small id="text-muted"> 2 hours ago</small>
+                    $now = new DateTime();
+                $comment_time = new DateTime($comment["time"]);
+                $interval = $now->diff($comment_time);
+
+                $hoursAgo = $interval->h + ($interval->days * 24) - 1;
+                $timeAgo = $hoursAgo > 0 ? $hoursAgo . ' hours ago' : 'less than an hour ago';
+
+                echo '
+                <div id="comment-user">
+                    <img src="./images/image.png" class="user-avatar" />
+                    <div>
+                        <div>';
+                        
+                echo '  @<strong>' . str_replace(" ", "", $user[0]["username"]) . '';
+                echo '
+                </strong>
+                <small id="text-muted"> ' . $timeAgo . '</small>
         </div>
         <div id="comment-content" >
             <p style="    width: 300px;text-wrap:wrap;
@@ -215,7 +237,7 @@ if ($result->num_rows > 0) {
         </div>
     </main>
     <?php
-    $sql = "SELECT title FROM annonces limit 3";
+    $sql = "SELECT title FROM annonces order by time DESC limit 3 ";
     $result = $conn->query($sql);
     $annonces = array();
     if ($result->num_rows > 0) {
@@ -245,21 +267,7 @@ if ($result->num_rows > 0) {
             </a>
         </div>
     </aside>
-    <aside>
-        <div class="d-flex justify-content-center align-items-center search">
-            <div class="position-relative">
-                <input type="text" class="form-control rounded-pill search-bar pe-5" placeholder="Search..."
-                    aria-label="Search">
-                <button class="btn position-absolute top-50 end-0 translate-middle-y" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-search" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </aside>
+
     <aside class="filter">
         <h5 class="fw-bold mb-3">Filtrer les Annonces</h5>
         <div class="dropdown">
