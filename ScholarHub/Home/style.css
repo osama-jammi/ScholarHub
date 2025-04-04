@@ -97,3 +97,46 @@ transform: translate(1300px,380px);
 }
 
 }
+header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+header p {
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+header img {
+    max-width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+/* Conteneur avec effet brillant */
+.glow-container {
+    background-color: #1b245c; 
+    padding: 50px 50px 70px 50px ;
+    margin: 50px 100px 50px 100px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #6336aa, 0 0 20px #6336aa, 0 0 30px #6336aa; /* Effet lumineux */
+    transition: 0.3s;
+}
+
+/* Effet plus intense au survol */
+.glow-container:hover {
+    box-shadow: 0 0 15px #9858ff, 0 0 30px #9858ff, 0 0 45px #9858ff;
+}
+
