@@ -50,6 +50,9 @@ if ($result->num_rows > 0) {
                         <a class="nav-link" href="../Home/index.html" style="color: var(--text-color)">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../A-propos/index.html" style="color: var(--text-color)">a propos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="../Publication/index.html"
                             style="color: var(--text-color)">Publication</a>
                     </li>
@@ -130,8 +133,28 @@ if ($result->num_rows > 0) {
             </div>
 
             <div class="content">
+            <div>
                 <i class="fas fa-file-upload fs-4 mb-2"></i>
                 <p class="small mb-2" ">' . $annoce["description"] . '</p>
+            </div>
+
+            <div id="pdfs">
+            <div id="pdf">
+
+                <i class="fa-solid fa-file-pdf"></i>
+                    <a href="#" class="btn btn-sm btn-outline-danger">Si Exists</a>
+                </div> 
+                <div id="pdf">
+
+                <i class="fa-solid fa-file-pdf"></i>
+                    <a href="#" class="btn btn-sm btn-outline-danger">Si Exists</a>
+                </div>
+             <div id="pdf">
+
+                <i class="fa-solid fa-file-pdf"></i>
+                    <a href="#" class="btn btn-sm btn-outline-danger">Si Exists</a>
+                </div>
+            </div>
             </div>
 
             <div class="mt-4">

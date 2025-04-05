@@ -57,7 +57,25 @@
             padding: 20px;
             
         }
-
+         #pdf{
+         
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+         }
+         #pdfs{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 10px;
+            width: 200px;
+            flex-wrap: wrap;
+         }
+         .fa-file-pdf{
+            color: #ff0000;
+            font-size: 20px;
+         }
         .cadre {
             background: var(--card-bg);
             border-radius: 16px;
@@ -113,7 +131,12 @@
             padding: 1.5rem;
             text-align: start;
             margin: 1.5rem 0;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
             transition: all 0.3s ease;
+            align-items: center;
+            
         }
 
         .content:hover {
