@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Publication</title>
+    <title>(<?=count($annoces)?>) Publication</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
@@ -97,8 +97,8 @@ if ($result->num_rows > 0) {
         <aside>
             <div class="justify-content-center align-items-center search">
                 <div class="position-relative">
-                    <input type="text" class="form-control rounded-pill search-bar pe-5" placeholder="Search..."
-                        aria-label="Search">
+                    <input id='search' type="search" class="form-control rounded-pill search-bar pe-5"
+                        placeholder="Search..." aria-label="Search" onchange="search(this)">
                     <button class="btn position-absolute top-50 end-0 translate-middle-y" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-search" viewBox="0 0 16 16">
@@ -388,20 +388,31 @@ if ($result->num_rows > 0) {
     });
     <?php endforeach; ?>
 
-    // Exemple de tri : par titre (ordre alphabétique)
-    annoces.sort((a, b) => a.id - b.id);
-    console.log(annoces);
+    let searchInput = document.getElementById('search');
 
-    // Pour trier par description
-    annoces.sort((a, b) => a.description.localeCompare(b.description));
-    console.log(annoces);
+    function search(thisInput) {
+        console.log("ok");
+        let searchValue = thisInput.value.toLowerCase();
+        let filteredAnnoces = annoces.filter(annonce => {
+            return annonce.title.toLowerCase().includes(searchValue) || annonce.description
+                .toLowerCase().includes(searchValue);
+        });
 
-    // Pour trier par date/heure (si "time" est bien un format date)
-    annoces.sort((a, b) => new Date(a.time) - new Date(b.time));
-    console.log(annoces);
+        // Clear previous results
+        document.querySelectorAll('.cadre').forEach(cadre => {
+            cadre.style.display = 'none';
+        });
 
-    console.log(annoces);
+        // Display filtered results
+        filteredAnnoces.forEach(annonce => {
+            let cadre = document.getElementById('cadre' + (annonce.id));
+            if (cadre) {
+                cadre.style.display = 'inline-block';
+            }
+        })
+    };
     </script>
+
 
 
     </body>
