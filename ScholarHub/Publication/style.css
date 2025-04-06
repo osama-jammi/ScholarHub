@@ -78,7 +78,6 @@
          }
         .cadre {
             background: var(--card-bg);
-            border-radius: 16px;
             box-shadow: 0 4px 6px rgb(0, 0, 0);
             margin-bottom: 2rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -395,4 +394,23 @@
 
 .search-bar:focus {
     width: 250px;
+}
+.filter input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: white;
+    transition: all 0.3s ease;
+    
+
+}
+.filter input:hover{
+    border: 1px solid;
+
+    border-image: linear-gradient( 90deg,rgba(255, 255, 255, 0),rgba(255, 0, 119, 0.671),rgba(255, 255, 255, 0)) 1;
+    background: rgba(255, 255, 255, 0.527);
+}
+form{
+    background-color: transparent;
 }

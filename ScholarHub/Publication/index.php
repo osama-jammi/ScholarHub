@@ -1,8 +1,17 @@
 <?php
 
 include '../Base-donnee/index.php';
-
-$sql = "SELECT id,title,description,genre,time ,cours FROM annonces order by time DESC";
+$sort="time DESC";
+if (isset($_GET['sort'])){
+    if ($_GET['sort'] == "Par Annee") {
+        $sort = "time DESC";
+    } elseif ($_GET['sort'] == "Par Sujet") {
+        $sort = "cours";
+    } elseif ($_GET['sort'] == "Par Genre") {
+        $sort = "genre";
+    }
+}
+$sql = "SELECT id,title,description,genre,time ,cours FROM annonces order by ".$sort;
 $result = $conn->query($sql);
 $annoces = array();
 $comments = array();
@@ -32,7 +41,7 @@ if ($result->num_rows > 0) {
 <?php include "style.css"?>
 </style>
 
-<body>
+<php>
     <div class="progress-bar">
         <div class="progress-fill"></div>
     </div>
@@ -103,7 +112,9 @@ if ($result->num_rows > 0) {
         <div class="annonces">
             <div class="skeleton-loader" style="height: 200px"></div>
             <?php
+            $i=0;
             foreach ($annoces as $annoce) {
+                $i++;
                 $now = new DateTime();
                 $annonce_time = new DateTime($annoce["time"]);
                 $interval = $now->diff($annonce_time);
@@ -111,7 +122,7 @@ if ($result->num_rows > 0) {
                 echo '
                 <div  id="' . str_replace(" ", "", $annoce["title"]) . '"></div>
                 <div ></div>
-    <article class="cadre">
+    <article class="cadre" id="cadre'.$i.'">
         <h2 class="titre-annonce">' . $annoce["title"] . '</h2>
         <div class="annonce-header">
             <img src="./images/image.png" class="user-avatar" />
@@ -139,21 +150,30 @@ if ($result->num_rows > 0) {
             </div>
 
             <div id="pdfs">
-            <div id="pdf">
+            ';
+            $sql = "SELECT name ,id FROM support WHERE id_annonce='" . $annoce['id'] . "'";
+            $result = $conn->query($sql);
+            $pdfs= array();
 
-                <i class="fa-solid fa-file-pdf"></i>
-                    <a href="#" class="btn btn-sm btn-outline-danger">Si Exists</a>
-                </div> 
-                <div id="pdf">
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while ($row = $result->fetch_assoc()) {
+                    array_push($pdfs, $row);
 
-                <i class="fa-solid fa-file-pdf"></i>
-                    <a href="#" class="btn btn-sm btn-outline-danger">Si Exists</a>
-                </div>
+                }
+            }
+            foreach ($pdfs as $pdf) {
+                 echo '
+          
+              
              <div id="pdf">
 
                 <i class="fa-solid fa-file-pdf"></i>
-                    <a href="#" class="btn btn-sm btn-outline-danger">Si Exists</a>
+                
+                    <a href="php/telecharger.php?id=' . $pdf['id'] . '" class="btn btn-sm btn-outline-danger"target="_blank" >'.$pdf['name'].'</a>
                 </div>
+                ';}
+                 echo '
             </div>
             </div>
 
@@ -292,17 +312,25 @@ if ($result->num_rows > 0) {
     </aside>
 
     <aside class="filter">
-        <h5 class="fw-bold mb-3">Filtrer les Annonces</h5>
-        <div class="dropdown">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                <i class="fa-solid fa-filter"></i>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item active" href="#">Par Année </a></li>
-                <li><a class="dropdown-item" href="#">par Sujet </a></li>
-                <li><a class="dropdown-item" href="#">Par Type </a></li>
-            </ul>
-        </div>
+        <form action="index.php" method="get">
+            <h5 class="fw-bold mb-3">Filtrer les Annonces</h5>
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item active" href="#"><input type="submit" value="Par Annee" name="sort"></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item active" href="#"><input type="submit" value="Par Sujet" name="sort"></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item active" href="#"><input type="submit" value="Par Genre" name="sort"></a>
+                    </li>
+                </ul>
+            </div>
+        </form>
     </aside>
     <!--
     <div class="fab">
@@ -347,7 +375,36 @@ if ($result->num_rows > 0) {
 
     }, 2000);
     </script>
-</body>
+    <script>
+    let annoces = [];
+    <?php foreach ($annoces as $value): ?>
+    annoces.push({
+        id: "<?= addslashes($value['id']) ?>",
+        title: "<?= addslashes($value['title']) ?>",
+        description: "<?= addslashes($value['description']) ?>",
+        genre: "<?= addslashes($value['genre']) ?>",
+        time: "<?= addslashes($value['time']) ?>",
+        cours: "<?= addslashes($value['cours']) ?>"
+    });
+    <?php endforeach; ?>
+
+    // Exemple de tri : par titre (ordre alphabétique)
+    annoces.sort((a, b) => a.id - b.id);
+    console.log(annoces);
+
+    // Pour trier par description
+    annoces.sort((a, b) => a.description.localeCompare(b.description));
+    console.log(annoces);
+
+    // Pour trier par date/heure (si "time" est bien un format date)
+    annoces.sort((a, b) => new Date(a.time) - new Date(b.time));
+    console.log(annoces);
+
+    console.log(annoces);
+    </script>
+
+
+    </body>
 
 </html>
 <?php
