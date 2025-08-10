@@ -119,7 +119,7 @@ graph TB
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/scholarhub.git
+git clone https://github.com/osama-jammi/scholarhub.git
 cd scholarhub
 
 # Import database
