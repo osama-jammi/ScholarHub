@@ -1,0 +1,315 @@
+/* ===== VARIABLES ===== */
+:root {
+  --primary-color: #0077B6;
+  --primary-hover: #005f8c;
+  --secondary-color: #00B4D8;
+  --white: #ffffff;
+  --light-bg: #f5f5f5;
+  --text-dark: #333;
+  --border-color: #ccc;
+  --shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  --form-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  --google-blue: #4285F4;
+  --google-hover: #357ABD;
+  
+  /* Dark mode variables */
+  --dark-bg: #121212;
+  --darker-bg: #1a1a1a;
+  --dark-text: #E0E0E0;
+  --dark-header: #1E1E1E;
+  --dark-border: #444;
+  --dark-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== BASE STYLES ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-mode header {
+  background-color: var(--dark-header);
+  color: var(--dark-text);
+  box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode nav a {
+  color: var(--dark-text);
+}
+
+body.dark-mode nav a:hover {
+  color: var(--secondary-color);
+}
+
+body.dark-mode .form-container {
+  background-color: var(--darker-bg);
+  color: var(--dark-text);
+  box-shadow: var(--dark-shadow);
+}
+
+body.dark-mode input {
+  background-color: var(--dark-header);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+body.dark-mode button {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+body.dark-mode .login-link a {
+  color: var(--secondary-color);
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: var(--white);
+  color: black;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ===== BANNER ===== */
+.banner {
+  text-align: center;
+  padding: 50px;
+  background: url('banner.jpg') center/cover;
+  color: var(--white);
+}
+
+/* ===== HOME SECTION ===== */
+.home {
+  background-image: url(../assets/home.png);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.home .et_pb {
+  padding: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.home .et_pb_image {
+  height: 140px;
+  position: relative;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+/* ===== FORM STYLES ===== */
+.form-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background: var(--white);
+  box-shadow: var(--form-shadow);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.register-form,
+.login-form {
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.register-form input,
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+.register-form input:focus,
+.login-form input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--primary-hover);
+}
+
+.register-form button,
+.login-form button {
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 12px;
+}
+
+/* ===== LINKS ===== */
+.login-link,
+.register-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link a,
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.login-link a:hover,
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===== SEPARATOR ===== */
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
+  color: #777;
+}
+
+.separator::before,
+.separator::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+body.dark-mode .separator::before,
+body.dark-mode .separator::after {
+  border-color: var(--dark-border);
+}
+
+.separator::before {
+  margin-right: 10px;
+}
+
+.separator::after {
+  margin-left: 10px;
+}
+
+/* ===== GOOGLE BUTTON ===== */
+.google-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--google-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: var(--google-hover);
+}
+
+.google-btn i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: var(--primary-color);
+  color: var(--white);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode footer {
+  background-color: var(--darker-bg);
+}
+
+/* ===== CONTENT SECTION ===== */
+.content {
+  padding: 20px;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 768px) {
+  .home .et_pb {
+    padding: 10%;
+  }
+  
+  .form-container {
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .banner {
+    padding: 30px 15px;
+  }
+  
+  .google-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

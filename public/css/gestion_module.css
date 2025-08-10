@@ -1,0 +1,340 @@
+/* Ajouter ces variables si elles n'existent pas */
+:root {
+    --primary-color: #4e73df;
+    --secondary-color: #858796;
+    --success-color: #1cc88a;
+    --info-color: #36b9cc;
+    --warning-color: #f6c23e;
+    --danger-color: #e74a3b;
+    --light-bg: #f8f9fc;
+    --dark-bg: #5a5c69;
+    --text-color: #5a5c69;
+    --border-color: #e3e6f0;
+    --card-bg: #ffffff;
+}
+
+.dark-mode {
+    --light-bg: #2c3034;
+    --dark-bg: #1a1a1a;
+    --text-color: #f8f9fa;
+    --border-color: #444;
+    --card-bg: #2c3034;
+}
+
+/* Améliorations pour le menu latéral */
+.side-nav {
+    transition: transform 0.3s ease;
+}
+
+.side-nav.collapsed {
+    transform: translateX(-100%);
+}
+
+/* Améliorations pour le responsive */
+@media (max-width: 768px) {
+    .side-nav {
+        position: fixed;
+        z-index: 1000;
+        height: 100vh;
+        transform: translateX(-100%);
+    }
+    
+    .side-nav.show {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* ===== BASE STYLES ===== */
+.module-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 10px;
+}
+
+/* ===== MODULE INFO CARD ===== */
+.module-info .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-photo {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.syllabus-section {
+    margin-top: 20px;
+}
+
+.syllabus-content {
+    background-color: var(--light-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.professor-info {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.professor-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+/* ===== TABS STYLES ===== */
+.module-tabs {
+    margin-top: 30px;
+}
+
+.nav-tabs {
+    border-bottom: 2px solid var(--border-color);
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-color);
+    border: none;
+    padding: 12px 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-content {
+    background-color: var(--card-bg);
+    border-radius: 0 0 8px 8px;
+}
+
+/* ===== STUDENTS TAB ===== */
+.student-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border-color);
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.student-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.student-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.student-actions .btn {
+    padding: 3px 8px;
+    font-size: 0.8rem;
+}
+
+.student-grades {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.average-display {
+    display: inline-block;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* ===== WORKS TAB ===== */
+.work-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.work-actions {
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+.list-group-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px !important;
+}
+
+/* ===== MODALS ===== */
+.modal-header {
+    padding: 15px 20px;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: var(--light-bg);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.file-upload-label:hover {
+    background-color: #e9ecef;
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* ===== ALERTS ===== */
+.alert {
+    padding: 12px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.alert i {
+    margin-right: 8px;
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+.dark-mode .syllabus-content {
+    background-color: #2c3034;
+    border-left-color: var(--primary-color);
+}
+
+.dark-mode .nav-tabs {
+    border-bottom-color: #444;
+}
+
+.dark-mode .nav-tabs .nav-link {
+    color: #f8f9fa;
+}
+
+.dark-mode .nav-tabs .nav-link.active {
+    color: var(--primary-color);
+}
+
+.dark-mode .tab-content {
+    background-color: #2c3034;
+    border-color: #444;
+}
+
+.dark-mode .student-card {
+    background-color: #2c3034;
+    border-color: #444;
+}
+
+.dark-mode .list-group-item {
+    background-color: #2c3034;
+    border-color: #444;
+}
+
+.dark-mode .table {
+    color: #f8f9fa;
+}
+
+.dark-mode .table-hover tbody tr:hover {
+    color: #f8f9fa;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 992px) {
+    .module-info .row > div {
+        margin-bottom: 20px;
+    }
+    
+    .professor-info {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .student-actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .work-details, .work-actions {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .work-actions {
+        margin-top: 10px;
+        justify-content: flex-start !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .module-photo {
+        max-height: 200px;
+    }
+    
+    .nav-tabs .nav-link {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .student-photo, .professor-photo {
+        width: 50px;
+        height: 50px;
+    }
+}

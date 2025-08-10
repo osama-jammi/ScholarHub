@@ -1,0 +1,526 @@
+/* Variables CSS */
+:root {
+    --primary-color: #4361ee;
+    --primary-hover: #3a56d4;
+    --secondary-color: #6c757d;
+    --success-color: #4cc9f0;
+    --danger-color: #f72585;
+    --warning-color: #f8961e;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --text-color: #2b2d42;
+    --text-light: #6c757d;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --sidebar-bg: #3a0ca3;
+    --sidebar-text: #ffffff;
+    --sidebar-hover: rgba(255, 255, 255, 0.15);
+    --nav-bg: #ffffff;
+    --nav-text: #212529;
+    --popup-bg: #ffffff;
+    --overlay-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode {
+    --primary-color: #4895ef;
+    --primary-hover: #4361ee;
+    --text-color: #f8f9fa;
+    --text-light: #adb5bd;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --sidebar-bg: #14213d;
+    --sidebar-text: #f8f9fa;
+    --sidebar-hover: rgba(255, 255, 255, 0.2);
+    --nav-bg: #1a1a1a;
+    --nav-text: #f8f9fa;
+    --popup-bg: #252525;
+}
+
+body {
+    background-color: red !important;
+}
+/* Structure de base */
+.module-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.module-title h2 {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.module-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Section informations */
+.module-section {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    margin-bottom: 30px;
+    border: 1px solid var(--border-color);
+}
+
+.section-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-header h3 {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-body {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.module-photo-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.module-photo {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.module-details {
+    flex: 2;
+    min-width: 300px;
+}
+
+.syllabus h4 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.syllabus p {
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.professor-info {
+    margin-top: 30px;
+}
+
+.professor-info h4 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.professor-card {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background-color: var(--light-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.professor-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.professor-details h5 {
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.professor-details p {
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+/* Onglets */
+.module-tabs {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.nav-tabs {
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 20px;
+}
+
+.nav-tabs .nav-link {
+    color: var(--text-color);
+    border: none;
+    padding: 12px 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+/* Onglet Étudiants */
+.students-container {
+    min-height: 300px;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.student-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.student-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.student-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.student-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.student-body {
+    padding: 15px;
+}
+
+.student-body h5 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.student-field {
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.student-grades {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.student-grades h6 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.grades-table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.grades-table td {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.no-grades {
+    color: var(--text-light);
+    font-style: italic;
+    margin: 10px 0;
+}
+
+.student-average {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.average-value {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Onglet Travaux */
+.works-container {
+    min-height: 300px;
+}
+
+.works-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.work-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.work-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work-header h5 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.work-deadline {
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+.work-body {
+    padding: 15px;
+}
+
+.work-body p {
+    margin-bottom: 15px;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+.work-file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+}
+
+.work-footer {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.work-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Onglet Statistiques */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+}
+
+.stats-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.stats-card h5 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stats-content {
+    height: 300px;
+}
+
+/* Modals */
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Overlay pour le menu mobile */
+.side-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay-color);
+    z-index: 998;
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .module-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .professor-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-body {
+        flex-direction: column;
+    }
+    
+    .module-photo-container {
+        min-width: 100%;
+    }
+    
+    .students-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .side-nav {
+        transform: translateX(-100%);
+    }
+    
+    .side-nav.show {
+        transform: translateX(0);
+    }
+    
+    .side-nav-overlay {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .module-photo {
+        max-height: 200px;
+    }
+    
+    .student-card {
+        width: 100%;
+    }
+    
+    .student-actions {
+        flex-direction: column;
+    }
+    
+    .work-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .work-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

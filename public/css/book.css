@@ -1,0 +1,209 @@
+/* ===== AMÉLIORATIONS DU DESIGN ===== */
+
+/* Amélioration des cartes de module */
+.module-card {
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.module-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border-left-color: var(--primary-color);
+}
+
+.module-card.active {
+    border-left-color: var(--primary-color);
+    background: var(--module-active-bg);
+    box-shadow: 0 3px 10px var(--shadow-color);
+}
+
+/* Amélioration des éléments de publication/travail */
+.publication-item, .travail-item {
+    transition: all 0.3s ease;
+    margin-bottom: 25px;
+}
+
+.publication-item:hover, .travail-item:hover {
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+/* Style amélioré pour les titres */
+.item-title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Amélioration des badges de statut */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* Style des boutons d'action */
+.action-btn {
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px var(--shadow-color);
+}
+
+/* Style du formulaire amélioré */
+.form-container {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.form-container:hover {
+    box-shadow: 0 6px 16px var(--shadow-color);
+}
+
+/* Style de la barre de recherche amélioré */
+.search-container {
+    position: relative;
+    margin-bottom: 25px;
+    max-width: 600px;
+}
+
+.search-input {
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.search-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-btn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+/* Animation pour les éléments mis en évidence */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.publication-item, .travail-item, .form-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Style pour les images de profil */
+.user-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.user-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+/* Style pour les sections */
+.content-section {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.section-title {
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Style pour les dates */
+.item-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin: 10px 0;
+}
+
+/* Style pour les icônes */
+.item-meta i {
+    margin-right: 5px;
+}
+
+/* Style pour les formulaires de rendu */
+[id^="rendu-form-"] {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .module-card {
+        padding: 12px;
+    }
+    
+    .publication-item, .travail-item {
+        padding: 15px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

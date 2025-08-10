@@ -1,0 +1,31 @@
+# PHP
+*.log
+*.tmp
+/vendor/
+/uploads/*
+
+# Database
+*.sql
+/database/backups/
+
+# Config files with sensitive data
+/src/config/db.php
+/src/config/google.php
+*.env
+
+# Cache
+/cache/*
+
+# Temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-*
+
+# Node modules (if any)
+node_modules/

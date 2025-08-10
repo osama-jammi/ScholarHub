@@ -1,0 +1,23 @@
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+    background-color: #1e1e1e !important;
+}
+
+.dark-mode .form-container,
+.dark-mode .feature-card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #444;
+}
